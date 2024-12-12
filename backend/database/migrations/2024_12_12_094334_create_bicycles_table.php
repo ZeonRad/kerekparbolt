@@ -13,19 +13,20 @@ return new class extends Migration
     {
         Schema::create('bicycles', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('wheel_size');
+            $table->string('name', 80);
+            $table->float('wheel_size');
             $table->integer('gears');
-            $table->string('sex');
-            $table->string('type');
-            $table->string('size');
-            $table->string('color');
-            $table->integer('manufacturer_id')->unsigned();
+            $table->string('sex', 10);
+            $table->string('type', 10);
+            $table->string('size', 10)->nullable();
+            $table->string('color', 20);
+            $table->unsignedBigInteger('manufacturer_id');
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('manufacturer_id')->references('id')->on('manufacturers');
+        
+            $table->foreign('manufacturer_id')->references('id')->on('manufacturers')->onDelete('cascade');
         });
+        
     }
 
     /**
