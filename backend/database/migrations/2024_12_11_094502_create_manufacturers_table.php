@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('manufacturers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('website')->nullable();
+            $table->string('name', 20); 
+            $table->string('website', 255)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
